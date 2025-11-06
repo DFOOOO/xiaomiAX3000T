@@ -29,11 +29,13 @@ env:
   TZ: Asia/Shanghai
 
 jobs:
-  build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
+    outputs:
+      deviceName: ${{ env.DEVICE_NAME }}
+      fileDate: ${{ env.FILE_DATE }}
+
     steps:
-    
-        - name: Before freeing up disk space
+    - name: Before freeing up disk space
       run: |
         echo "Before freeing up disk space"
         echo "=============================================================================="
@@ -78,7 +80,7 @@ jobs:
         echo "=============================================================================="
         df -hT
         echo "=============================================================================="
-    
+
     - name: Checkout
       uses: actions/checkout@main
 
